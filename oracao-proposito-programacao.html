@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Oração pela Vaga na Programação</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #e8c97a;
+      --gold-dim: #8a6e2f;
+      --cream: #faf6ef;
+      --cream-dark: #f0e8d8;
+      --ink: #1a1510;
+      --ink-soft: #3d3020;
+      --ink-muted: #6b5a3e;
+      --border: rgba(201, 168, 76, 0.25);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      background-color: var(--ink);
+      background-image:
+        radial-gradient(ellipse at 20% 10%, rgba(201,168,76,0.07) 0%, transparent 55%),
+        radial-gradient(ellipse at 80% 90%, rgba(201,168,76,0.05) 0%, transparent 55%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 3rem 1.25rem 5rem;
+      font-family: 'EB Garamond', serif;
+      color: var(--ink);
+    }
+
+    .page {
+      background: var(--cream);
+      background-image:
+        radial-gradient(ellipse at 50% 0%, rgba(201,168,76,0.08) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+      max-width: 720px;
+      width: 100%;
+      padding: 4rem 3.5rem 3.5rem;
+      border: 1px solid var(--border);
+      box-shadow:
+        0 0 0 6px rgba(201,168,76,0.06),
+        0 4px 60px rgba(0,0,0,0.55),
+        inset 0 1px 0 rgba(255,255,255,0.6);
+      position: relative;
+      animation: fadeIn 1.4s ease both;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .page::before, .page::after {
+      content: '';
+      position: absolute;
+      width: 60px; height: 60px;
+      border-color: var(--gold-dim);
+      border-style: solid;
+      opacity: 0.45;
+    }
+    .page::before { top: 16px; left: 16px; border-width: 1px 0 0 1px; }
+    .page::after  { bottom: 16px; right: 16px; border-width: 0 1px 1px 0; }
+
+    .inner-corners::before, .inner-corners::after {
+      content: '';
+      position: absolute;
+      width: 60px; height: 60px;
+      border-color: var(--gold-dim);
+      border-style: solid;
+      opacity: 0.45;
+    }
+    .inner-corners::before { top: 16px; right: 16px; border-width: 1px 1px 0 0; }
+    .inner-corners::after  { bottom: 16px; left: 16px; border-width: 0 0 1px 1px; }
+
+    /* ── TOPO ── */
+    .ornament-top {
+      text-align: center;
+      margin-bottom: 2rem;
+      animation: fadeIn 1.6s ease 0.2s both;
+    }
+    .ornament-top .cross {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      color: var(--gold);
+      display: block;
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      text-shadow: 0 0 18px rgba(201,168,76,0.25);
+    }
+    .ornament-line {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-content: center;
+    }
+    .ornament-line span {
+      height: 1px; width: 80px;
+      background: linear-gradient(to right, transparent, var(--gold-dim));
+    }
+    .ornament-line span:last-child {
+      background: linear-gradient(to left, transparent, var(--gold-dim));
+    }
+    .ornament-line i {
+      color: var(--gold);
+      font-style: normal;
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      font-family: 'Cinzel', serif;
+    }
+
+    /* ── CABEÇALHO ── */
+    h1.titulo {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1rem, 2.3vw, 1.2rem);
+      font-weight: 600;
+      color: var(--gold-dim);
+      text-align: center;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      margin-bottom: 0.4rem;
+      animation: fadeIn 1.6s ease 0.3s both;
+    }
+    .subtitulo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(0.9rem, 2vw, 1rem);
+      font-style: italic;
+      color: var(--ink-muted);
+      text-align: center;
+      letter-spacing: 0.06em;
+      margin-bottom: 1.8rem;
+      animation: fadeIn 1.6s ease 0.35s both;
+    }
+    h2.saudacao {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1.3rem, 3.8vw, 1.75rem);
+      font-weight: 300;
+      font-style: italic;
+      color: var(--ink-soft);
+      text-align: center;
+      line-height: 1.5;
+      margin-bottom: 2.25rem;
+      animation: fadeIn 1.6s ease 0.4s both;
+    }
+
+    /* ── SEPARADOR ── */
+    .separator {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 1.75rem 0;
+    }
+    .separator hr {
+      flex: 1; border: none; height: 1px;
+      background: linear-gradient(to right, transparent, var(--border), transparent);
+    }
+    .separator .dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: 0.6;
+    }
+
+    /* ── CORPO POÉTICO ── */
+    .oracao {
+      animation: fadeIn 1.8s ease 0.5s both;
+    }
+
+    /* Abertura em itálico com borda dourada */
+    .oracao .bloco-abertura {
+      border-left: 2px solid var(--gold);
+      padding-left: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    .oracao .bloco-abertura p {
+      font-style: italic;
+      font-size: clamp(1.05rem, 2.3vw, 1.15rem);
+      line-height: 2.1;
+      color: var(--ink-soft);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Versos — cada linha é um <p> curto */
+    .oracao .verso {
+      font-size: clamp(1rem, 2.2vw, 1.12rem);
+      line-height: 2;
+      color: var(--ink-soft);
+      margin-bottom: 0.35rem;
+      padding-left: 0;
+      font-weight: 400;
+    }
+
+    /* Grupo de versos separado por espaço */
+    .oracao .estrofe {
+      margin-bottom: 1.6rem;
+    }
+
+    /* Versos de declaração — destaque */
+    .oracao .declaracao-verso {
+      font-size: clamp(1rem, 2.2vw, 1.12rem);
+      line-height: 2;
+      color: var(--ink);
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+    }
+
+    /* Bloco de declarações em caixa */
+    .bloco-declaracao {
+      background: rgba(201,168,76,0.06);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 1.5rem 1.75rem;
+      margin: 1.5rem 0;
+    }
+    .bloco-declaracao .verso {
+      margin-bottom: 0.35rem;
+    }
+    .bloco-declaracao .declaracao-verso {
+      margin-bottom: 0.35rem;
+    }
+
+    /* Versículo final */
+    .versiculo {
+      margin-top: 2rem;
+      padding: 1.25rem 1.5rem;
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      text-align: center;
+    }
+    .versiculo blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(1rem, 2.3vw, 1.15rem);
+      font-style: italic;
+      color: var(--ink-soft);
+      line-height: 1.8;
+      margin-bottom: 0.4rem;
+    }
+    .versiculo cite {
+      font-family: 'Cinzel', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.12em;
+      color: var(--gold-dim);
+      font-style: normal;
+    }
+
+    /* ── AMÉM ── */
+    .amen {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    .amen span {
+      font-family: 'Cinzel', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--gold-dim);
+      letter-spacing: 0.2em;
+      display: inline-block;
+    }
+    .amen span::before, .amen span::after {
+      content: '—';
+      margin: 0 0.6rem;
+      color: var(--gold);
+      opacity: 0.5;
+      font-weight: 300;
+    }
+
+    /* ── RODAPÉ ── */
+    footer {
+      margin-top: 2.5rem;
+      text-align: center;
+      animation: fadeIn 2s ease 0.6s both;
+    }
+    .sep-footer {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .sep-footer hr {
+      width: 60px; border: none; height: 1px;
+      background: linear-gradient(to right, transparent, var(--gold-dim));
+    }
+    .sep-footer hr:last-child {
+      background: linear-gradient(to left, transparent, var(--gold-dim));
+    }
+    .sep-footer .loz { color: var(--gold); font-size: 0.5rem; }
+    footer p {
+      font-family: 'Cinzel', serif;
+      font-size: 0.7rem;
+      color: var(--ink-muted);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+    }
+    footer a {
+      color: var(--gold-dim);
+      text-decoration: none;
+      transition: color 0.2s;
+      border-bottom: 1px solid transparent;
+    }
+    footer a:hover { color: var(--gold); border-bottom-color: var(--gold); }
+
+    @media (max-width: 540px) {
+      .page { padding: 2.75rem 1.5rem 2.5rem; }
+      .page::before, .page::after,
+      .inner-corners::before, .inner-corners::after {
+        width: 36px; height: 36px; top: 10px; left: 10px;
+      }
+      .page::after { bottom: 10px; right: 10px; left: auto; top: auto; }
+      .inner-corners::before { top: 10px; right: 10px; left: auto; }
+      .inner-corners::after { bottom: 10px; left: 10px; right: auto; top: auto; }
+    }
+  </style>
+</head>
+<body>
+<main class="page inner-corners">
+
+  <div class="ornament-top">
+    <span class="cross">✦</span>
+    <div class="ornament-line">
+      <span></span><i>· · ·</i><span></span>
+    </div>
+  </div>
+
+  <h1 class="titulo">Oração pela Vaga na Programação</h1>
+  <p class="subtitulo">Uma oração de fé, propósito, perseverança e confiança em Deus</p>
+  <h2 class="saudacao">Senhor meu Deus,<br>antes de qualquer pedido,<br>eu quero Te agradecer.</h2>
+
+  <div class="separator"><hr /><div class="dot"></div><hr /></div>
+
+  <div class="oracao">
+
+    <!-- AGRADECIMENTO -->
+    <div class="estrofe bloco-abertura">
+      <p>Obrigado pela vida que pulsa em mim a cada amanhecer,<br>
+      pela saúde que sustenta meu corpo e clareia minha mente,<br>
+      pelas oportunidades que já chegaram até mim,<br>
+      pelas portas que o Senhor abriu com graça<br>
+      e até pelas que foram fechadas com propósito,<br>
+      porque eu sei que Tu conheces caminhos<br>
+      que meus olhos ainda não conseguem enxergar.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">Obrigado pelos aprendizados silenciosos,</p>
+      <p class="verso">pelas dificuldades que me fortaleceram por dentro,</p>
+      <p class="verso">pelos dias pesados que me ensinaram resiliência,</p>
+      <p class="verso">pelos momentos em que pensei em desistir</p>
+      <p class="verso">mas encontrei, no fundo de mim, forças para continuar.</p>
+      <p class="verso">Obrigado porque mesmo quando tudo parecia incerto,</p>
+      <p class="verso">quando o caminho estava escuro e as respostas tardavam,</p>
+      <p class="verso">o Senhor nunca me abandonou.</p>
+      <p class="verso">Nunca.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">Obrigado por cada linha de código que estudei,</p>
+      <p class="verso">por cada conceito que se abriu na minha mente,</p>
+      <p class="verso">por cada projeto construído em silêncio,</p>
+      <p class="verso">por cada hora investida em formação</p>
+      <p class="verso">enquanto o mundo lá fora não via ainda o que estava sendo preparado.</p>
+      <p class="verso">Obrigado por ter me dado uma trajetória que parece desviada</p>
+      <p class="verso">mas que, na verdade, é tudo somado.</p>
+      <p class="verso">Dez anos de gestão, análise, decisão e responsabilidade</p>
+      <p class="verso">não foram um erro de percurso.</p>
+      <p class="verso">Foram a base que o Senhor já sabia que eu precisaria.</p>
+    </div>
+
+    <div class="separator"><hr /><div class="dot"></div><hr /></div>
+
+    <!-- O SONHO -->
+    <div class="estrofe">
+      <p class="verso">Pai, hoje eu coloco diante de Ti o meu sonho</p>
+      <p class="verso">de conquistar uma oportunidade na área de programação.</p>
+      <p class="verso">O Senhor conhece o meu coração,</p>
+      <p class="verso">conhece o que há por trás desse desejo,</p>
+      <p class="verso">conhece os medos que ainda habitam em mim,</p>
+      <p class="verso">as inseguranças que às vezes tentam enfraquecer minha fé</p>
+      <p class="verso">e as dúvidas que sussurram que não sou suficiente.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">Muitas vezes eu penso que ainda não estou preparado,</p>
+      <p class="verso">que preciso estudar mais,</p>
+      <p class="verso">aprender mais,</p>
+      <p class="verso">evoluir mais,</p>
+      <p class="verso">construir mais projetos,</p>
+      <p class="verso">dominar mais tecnologias...</p>
+      <p class="verso">Mas eu também entendo, Senhor, que ninguém nasce pronto.</p>
+      <p class="verso">Nenhum desenvolvedor chegou ao primeiro dia sabendo tudo.</p>
+      <p class="verso">Todo profissional um dia começou do zero —</p>
+      <p class="verso">sem experiência comprovada,</p>
+      <p class="verso">sem respostas para todas as perguntas,</p>
+      <p class="verso">sem dominar cada ferramenta.</p>
+      <p class="verso">E mesmo assim, começou.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">E eu sei, Senhor, que se uma oportunidade chegar até mim —</p>
+      <p class="verso">seja uma vaga júnior,</p>
+      <p class="verso">seja um estágio,</p>
+      <p class="verso">seja qualquer porta que o Senhor resolver abrir —</p>
+      <p class="verso">eu irei me desenvolver com rapidez,</p>
+      <p class="verso">aprender com dedicação genuína,</p>
+      <p class="verso">crescer com consistência</p>
+      <p class="verso">e dar o meu melhor todos os dias.</p>
+      <p class="verso">Não por obrigação.</p>
+      <p class="verso">Por gratidão.</p>
+      <p class="verso">Por propósito.</p>
+      <p class="verso">Por convicção.</p>
+    </div>
+
+    <div class="separator"><hr /><div class="dot"></div><hr /></div>
+
+    <!-- DECLARAÇÕES DE IDENTIDADE -->
+    <div class="bloco-declaracao">
+      <p class="declaracao-verso">Porque eu sou capaz.</p>
+      <p class="declaracao-verso">Eu sou disciplinado.</p>
+      <p class="declaracao-verso">Eu sou organizado.</p>
+      <p class="declaracao-verso">Eu sou resiliente.</p>
+      <p class="declaracao-verso">Eu tenho força de vontade para vencer.</p>
+      <p class="verso" style="margin-top:0.9rem;">E acima de tudo,</p>
+      <p class="verso">eu tenho fé inabalável</p>
+      <p class="verso">de que o Senhor está comigo</p>
+      <p class="verso">em cada estudo,</p>
+      <p class="verso">em cada candidatura,</p>
+      <p class="verso">em cada passo incerto dessa caminhada.</p>
+    </div>
+
+    <div class="separator"><hr /><div class="dot"></div><hr /></div>
+
+    <!-- PEDIDOS -->
+    <div class="estrofe">
+      <p class="verso">Pai, fortalece minha mente para que eu não me compare com ninguém.</p>
+      <p class="verso">Afasta de mim o sentimento de incapacidade,</p>
+      <p class="verso">o peso da síndrome do impostor,</p>
+      <p class="verso">o medo paralisante do fracasso,</p>
+      <p class="verso">a ansiedade que antecipa o pior</p>
+      <p class="verso">e toda voz interna que tenta dizer que eu não consigo,</p>
+      <p class="verso">que é tarde demais,</p>
+      <p class="verso">que outros já chegaram antes de mim.</p>
+      <p class="verso">Essas vozes não vêm do Senhor.</p>
+      <p class="verso">E eu as recuso.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">Que eu tenha coragem para continuar estudando mesmo cansado,</p>
+      <p class="verso">persistência para tentar novamente após cada rejeição,</p>
+      <p class="verso">humildade para aprender com quem já sabe mais,</p>
+      <p class="verso">e sabedoria para entender</p>
+      <p class="verso">que cada processo seletivo,</p>
+      <p class="verso">cada feedback recebido,</p>
+      <p class="verso">cada erro cometido e corrigido</p>
+      <p class="verso">faz parte da construção</p>
+      <p class="verso">do profissional que estou me tornando.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">Senhor, eu entrego nas Tuas mãos</p>
+      <p class="verso">cada currículo enviado,</p>
+      <p class="verso">cada candidatura feita com esperança,</p>
+      <p class="verso">cada entrevista marcada com nervosismo,</p>
+      <p class="verso">cada teste técnico respondido com o que sei,</p>
+      <p class="verso">cada mensagem enviada,</p>
+      <p class="verso">cada conexão feita no LinkedIn,</p>
+      <p class="verso">cada linha de código publicada no GitHub.</p>
+      <p class="verso">Tudo está nas Tuas mãos.</p>
+      <p class="verso">Tudo.</p>
+    </div>
+
+    <div class="separator"><hr /><div class="dot"></div><hr /></div>
+
+    <!-- CONFIANÇA NO COMO -->
+    <div class="bloco-declaracao">
+      <p class="declaracao-verso">Não importa COMO o Senhor fará.</p>
+      <p class="declaracao-verso">Não importa QUANDO acontecerá.</p>
+      <p class="declaracao-verso">Não importa POR QUAL CAMINHO virá.</p>
+      <p class="verso" style="margin-top:0.9rem;">Eu não quero viver me consumindo</p>
+      <p class="verso">tentando controlar o que não está nas minhas mãos.</p>
+      <p class="verso">Eu quero apenas continuar caminhando,</p>
+      <p class="verso">estudando,</p>
+      <p class="verso">me preparando,</p>
+      <p class="verso">confiando,</p>
+      <p class="verso">acreditando</p>
+      <p class="verso">e fortalecendo meu vínculo Contigo,</p>
+      <p class="verso">porque eu sei — com toda certeza —</p>
+      <p class="verso">que para Ti nada é impossível.</p>
+      <p class="verso">Absolutamente nada.</p>
+    </div>
+
+    <div class="separator"><hr /><div class="dot"></div><hr /></div>
+
+    <!-- QUANDO CHEGAR A VAGA -->
+    <div class="estrofe">
+      <p class="verso">Se existe uma vaga certa para mim,</p>
+      <p class="verso">o Senhor irá me conduzir até ela.</p>
+      <p class="verso">Irá mover as pessoas certas.</p>
+      <p class="verso">Irá abrir os olhos do recrutador certo.</p>
+      <p class="verso">Irá colocar o meu nome diante de quem precisa vê-lo.</p>
+      <p class="verso">E quando eu chegar até essa oportunidade,</p>
+      <p class="verso">eu sei que não chegarei sozinho.</p>
+      <p class="verso">O Senhor estará comigo,</p>
+      <p class="verso">me dando inteligência para absorver o que preciso,</p>
+      <p class="verso">equilíbrio emocional para enfrentar a pressão,</p>
+      <p class="verso">aprendizado acelerado para superar as lacunas,</p>
+      <p class="verso">evolução constante para honrar a confiança depositada</p>
+      <p class="verso">e direção clara para cada decisão técnica e profissional.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">Que eu não desista nos dias silenciosos,</p>
+      <p class="verso">quando nenhuma resposta chega</p>
+      <p class="verso">e o silêncio parece uma sentença.</p>
+      <p class="verso">Que eu não perca a esperança quando as respostas demorarem,</p>
+      <p class="verso">quando o processo seletivo parecer injusto,</p>
+      <p class="verso">quando o que sei não parecer suficiente.</p>
+      <p class="verso">Que eu continue firme mesmo sem entender os processos,</p>
+      <p class="verso">mesmo sem ver o fim do caminho,</p>
+      <p class="verso">mesmo sem saber exatamente quanto tempo vai demorar.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">Porque eu acredito que existe um propósito sendo preparado.</p>
+      <p class="verso">Existe crescimento acontecendo mesmo enquanto espero.</p>
+      <p class="verso">Existe um futuro sendo construído</p>
+      <p class="verso">tijolo por tijolo,</p>
+      <p class="verso">classe por classe,</p>
+      <p class="verso">commit por commit.</p>
+    </div>
+
+    <div class="separator"><hr /><div class="dot"></div><hr /></div>
+
+    <!-- PEDIDOS FINAIS -->
+    <div class="estrofe">
+      <p class="verso">Pai, abre as portas certas no tempo exato.</p>
+      <p class="verso">Conecta-me às pessoas que precisam do que tenho a oferecer.</p>
+      <p class="verso">Guia meus estudos para que eu aprenda o que importa.</p>
+      <p class="verso">Guia minhas escolhas para que eu não perca tempo com o que distrai.</p>
+      <p class="verso">Guia minha mente para que eu pense com clareza</p>
+      <p class="verso">nas horas em que a dúvida tentar me parar.</p>
+      <p class="verso">Guia meu coração para que ele permaneça firme</p>
+      <p class="verso">nos dias em que a fé parecer pequena demais.</p>
+    </div>
+
+    <div class="estrofe">
+      <p class="verso">E quando a oportunidade finalmente chegar,</p>
+      <p class="verso">que eu entre nela com humildade genuína,</p>
+      <p class="verso">com gratidão transbordando,</p>
+      <p class="verso">com dedicação que surpreende,</p>
+      <p class="verso">com disposição ilimitada para aprender,</p>
+      <p class="verso">com maturidade para lidar com erros,</p>
+      <p class="verso">e com a consciência de que aquela porta</p>
+      <p class="verso">não foi aberta por acidente —</p>
+      <p class="verso">foi aberta porque o Senhor decidiu que era hora.</p>
+    </div>
+
+    <div class="separator"><hr /><div class="dot"></div><hr /></div>
+
+    <!-- DECLARAÇÃO FINAL -->
+    <div class="bloco-declaracao">
+      <p class="declaracao-verso">Eu declaro que minha história não será marcada pelo medo,</p>
+      <p class="declaracao-verso">mas pela perseverança.</p>
+      <p class="declaracao-verso">Não pela desistência,</p>
+      <p class="declaracao-verso">mas pela evolução consistente.</p>
+      <p class="declaracao-verso">Não pela insegurança,</p>
+      <p class="declaracao-verso">mas pela fé que se move mesmo sem ver.</p>
+      <p class="verso" style="margin-top:0.9rem;">Eu confio em Ti, Senhor.</p>
+      <p class="verso">Mesmo sem enxergar o caminho completo,</p>
+      <p class="verso">eu continuo caminhando.</p>
+      <p class="verso">Mesmo sem saber o amanhã,</p>
+      <p class="verso">eu continuo acreditando.</p>
+      <p class="verso">Mesmo sem ter todas as respostas,</p>
+      <p class="verso">eu continuo estudando.</p>
+      <p class="verso">Mesmo sem sentir,</p>
+      <p class="verso">eu continuo declarando.</p>
+    </div>
+
+    <div class="estrofe" style="margin-top: 1.6rem;">
+      <p class="verso">Porque eu sei que o Senhor não me abandonou.</p>
+      <p class="verso">Sei que Ele está trabalhando no invisível.</p>
+      <p class="verso">Sei que aquilo que hoje parece distante,</p>
+      <p class="verso">amanhã poderá se tornar testemunho.</p>
+      <p class="verso">E quando esse dia chegar,</p>
+      <p class="verso">eu saberei que não foi sorte.</p>
+      <p class="verso">Foi fé.</p>
+      <p class="verso">Foi trabalho.</p>
+      <p class="verso">Foi Deus.</p>
+    </div>
+
+    <!-- VERSÍCULO -->
+    <div class="versiculo">
+      <blockquote>
+        "Entrega o teu caminho ao Senhor;<br>
+        confia nele, e ele tudo fará."
+      </blockquote>
+      <cite>— Salmos 37:5</cite>
+    </div>
+
+  </div>
+
+  <div class="amen">
+    <span>Amém</span>
+  </div>
+
+  <div class="separator" style="margin-top: 2.5rem;">
+    <hr /><div class="dot"></div><hr />
+  </div>
+
+  <footer>
+    <div class="sep-footer">
+      <hr /><span class="loz">◆</span><hr />
+    </div>
+    <p>
+      Desenvolvido por
+      <a href="https://github.com/fabriciobzrr" target="_blank" rel="noopener noreferrer">
+        Fabricio Bezerra
+      </a>
+    </p>
+  </footer>
+
+</main>
+</body>
+</html>
